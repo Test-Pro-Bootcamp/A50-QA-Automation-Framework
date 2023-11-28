@@ -9,4 +9,5 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
     }
 }
-"Hey, people"
+"Hello, world!"
+
