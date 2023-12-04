@@ -27,7 +27,7 @@ public class Homework16 extends BaseTest {
 
         WebElement submitBtn = driver.findElement(By.cssSelector("[id='button']"));
 
-        Assert.assertFalse(submitBtn.isDisplayed());
+        Assert.assertTrue(submitBtn.isDisplayed());
         driver.quit();
     }
 }
