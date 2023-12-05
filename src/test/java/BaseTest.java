@@ -1,5 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -59,6 +60,7 @@ public class BaseTest {
 
         WebElement inputTypeText = getDriver().findElement(By.cssSelector("form[class='create']>input"));
         inputTypeText.sendKeys("NewP");
+        inputTypeText.sendKeys(Keys.ENTER);
 
 
     }
