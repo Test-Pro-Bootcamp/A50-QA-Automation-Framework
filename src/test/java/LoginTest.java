@@ -4,49 +4,25 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
 public class LoginTest extends BaseTest {
-    @Test
+
+    @Test(testName = "Login with empty email and password test", groups = "Regression")
     public void loginEmptyEmailPasswordTest() {
-
-//      Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        WebDriver driver = new ChromeDriver(options);
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        String url = "https://qa.koel.app/";
-        driver.get(url); //open page
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
+        Assert.assertEquals(getDriver().getCurrentUrl(), url);
     }
 
-    @Test
+    @Test(testName = "Login with correct credentals test", groups = {"Smoke", "Regression"})
     public void loginUserTest() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*"); // resolve issue with web socket error
-        WebDriver driver = new ChromeDriver(options);
+        enterEmail("demo@class.com");
+        enterPassword("te$t$tudent");
+        clickLoginButton();
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        WebElement logoutButton = getDriver().findElement(By.cssSelector("a[data-testid='btn-logout']>i"));
 
-        String url = "https://qa.koel.app/";
-        driver.get(url); //open page
-
-        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));// or xpath
-        emailField.sendKeys("demo@class.com");
-
-        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
-        passwordField.sendKeys("te$t$tudent");
-
-        WebElement loginButton = driver.findElement(By.cssSelector("button[type='submit']"));
-        loginButton.click();
-
-        WebElement logoutButton = driver.findElement(By.cssSelector("a[data-testid='btn-logout']>i"));
-
-        Assert.assertFalse(logoutButton.isDisplayed());
-        driver.quit();
+        Assert.assertTrue(logoutButton.isDisplayed());
     }
 }
