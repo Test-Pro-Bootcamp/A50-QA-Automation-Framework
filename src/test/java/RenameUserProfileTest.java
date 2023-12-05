@@ -11,14 +11,10 @@ import java.util.UUID;
 
 public class RenameUserProfileTest extends BaseTest {
 
-    @Test(testName = "Rename user name test", groups = {"Smoke", "Regression"})
+    @Test(testName = "Rename user name test", groups = {"Smoke", "Regression", "Add playelist"})
     public void renameUserTest() throws InterruptedException {
         String newName = UUID.randomUUID().toString();
-
-        enterEmail("demo@class.com");
-        enterPassword("te$t$tudent");
-        clickLoginButton();
-
+        loginKoel("demo@class.com", "te$t$tudent");
         Thread.sleep(5000);
 
         WebElement avatar = getDriver().findElement(By.cssSelector("img[class='avatar']"));
@@ -34,6 +30,10 @@ public class RenameUserProfileTest extends BaseTest {
         WebElement saveButton = getDriver().findElement(By.cssSelector(".btn-submit"));
         saveButton.click();
 
-        Assert.assertEquals(profileNameField.getText(), newName);
+        Thread.sleep(3000);
+
+        WebElement viewProfileElement = getDriver().findElement(By.cssSelector("a[data-testid='view-profile-link']"));
+
+        Assert.assertEquals(viewProfileElement.getText(), newName);
     }
 }

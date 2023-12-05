@@ -1,4 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.netty.util.internal.StringUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,8 +13,8 @@ import java.time.Duration;
 
 public class BaseTest {
 
-    WebDriver driver = null;
-    String url = "https://qa.koel.app/";
+    private WebDriver driver = null;
+    protected String url = "https://qa.koel.app/";
 
     @BeforeSuite
     static void setupClass() {
@@ -40,7 +41,7 @@ public class BaseTest {
     }
 
     public void enterEmail(String email) {
-        WebElement emailField = getDriver().findElement(By.cssSelector("input[type='email']"));// or xpath
+        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));// or xpath
         emailField.sendKeys(email);
     }
 
@@ -52,5 +53,11 @@ public class BaseTest {
     public void clickLoginButton() {
         WebElement loginButton = getDriver().findElement(By.cssSelector("button[type='submit']"));
         loginButton.click();
+    }
+
+    public void loginKoel(String email, String password) {
+        enterEmail(email);
+        enterPassword(password);
+        clickLoginButton();
     }
 }
