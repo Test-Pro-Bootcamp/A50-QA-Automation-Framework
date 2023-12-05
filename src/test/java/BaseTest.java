@@ -31,14 +31,15 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(url);
     }
-
     public WebDriver getDriver() {
         return driver;
     }
+
     @AfterMethod
     public void closeWebBrowser() {
         getDriver().quit();
     }
+
     public void enterEmail(String email){
         WebElement emailField = getDriver().findElement(By.cssSelector("input[type='email']"));
         emailField.sendKeys(email);
@@ -62,18 +63,33 @@ public class BaseTest {
         inputTypeText.sendKeys("NewP");
         inputTypeText.sendKeys(Keys.ENTER);
 
-
     }
-    public void addSongUserPlaylist() {
+    public void addSongIntoUserPlaylist() {
         WebElement playlistAllSongs = getDriver().findElement(By.cssSelector("a[class='songs']"));
         playlistAllSongs.click();
 
-        WebElement songWayOfSamurai = getDriver().findElement(By.cssSelector("tr[class='song-item selected']"));
-        songWayOfSamurai.click();
+        WebElement firstSongInAllSongsList = getDriver().findElement(By.cssSelector
+                ("#songsWrapper > div > div > div > table > tr:nth-child(1) > td.title"));
+        firstSongInAllSongsList.click();
 
         WebElement buttonAddTo = getDriver().findElement(By.cssSelector("button[class='btn-add-to']"));
         buttonAddTo.click();
 
+        WebElement playlistNewPinDropDownMenu = getDriver().findElement(By.cssSelector
+                ("  #songsWrapper > header > div > div > section > ul > li.playlist"));
+        playlistNewPinDropDownMenu.click();
+
+        WebElement createdPlaylistNewP = getDriver().findElement(By.cssSelector
+                ("#playlists > ul > li:nth-child(4) > a"));
+        createdPlaylistNewP.click();
 
     }
+        public void clickDeletePlaylist(){
+        WebElement deletePlaylist = getDriver().findElement(By.cssSelector("div>span>button.del"));
+        deletePlaylist.click();
+
+        WebElement buttonOk =getDriver().findElement(By.cssSelector("button.ok"));
+        buttonOk.click();
+    }
+
 }

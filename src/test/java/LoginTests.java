@@ -12,7 +12,7 @@ public class LoginTests extends BaseTest {
     public void loginEmptyEmailPassword() {
         Assert.assertEquals(getDriver().getCurrentUrl(), url);
     }
-    @Test(testName = "Login with correct credentials test", groups = "Smoke")
+    @Test(testName = "Login with correct credentials test", groups = {"Smoke","Regression"})
     public void loginUserTest() {
 
         enterEmail("son.nam.kim@testpro.io");
