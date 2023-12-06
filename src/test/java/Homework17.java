@@ -16,5 +16,6 @@ public class Homework17 extends BaseTest {
     createPlaylist("Playlist1");
     goToAllSongs();
     selectSong("BossStatus");
+
     }
 }
