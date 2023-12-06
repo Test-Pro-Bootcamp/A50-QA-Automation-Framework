@@ -91,5 +91,5 @@ public class BaseTest {
         WebElement successBanner = driver.findElement(By.cssSelector("div[class='success show']"));
         Assert.assertTrue(successBanner.isDisplayed());
     }
-    }
+    
 }
