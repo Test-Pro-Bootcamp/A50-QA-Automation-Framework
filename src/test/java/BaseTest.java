@@ -55,4 +55,9 @@ public class BaseTest {
 
     }
 
+    public void goToAllSongs () {
+        WebElement allSongsBtn = driver.findElement(By.cssSelector("a[class='songs']"));
+        allSongsBtn.click();
+    }
+
 }
