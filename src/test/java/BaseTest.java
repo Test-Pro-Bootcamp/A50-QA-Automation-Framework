@@ -40,9 +40,19 @@ public class BaseTest {
     }
 
     public void logIn (String email, String password) {
-        
+        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
+        emailField.click();
+        emailField.clear();
+        emailField.sendKeys(email);
+
+        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
+        passwordField.click();
+        passwordField.clear();
+        passwordField.sendKeys(password);
+
+        WebElement logInBtn = driver.findElement(By.cssSelector("button[type='submit']"));
+        logInBtn.click();
+
     }
-
-
 
 }
