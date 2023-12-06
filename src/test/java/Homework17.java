@@ -13,5 +13,6 @@ public class Homework17 extends BaseTest {
     @Test
     public void addSongToPlaylist() {
     logIn("andrey.zlotnikov@testpro.io", "Man07hat01tan26!");
+    goToAllSongs();
     }
 }
