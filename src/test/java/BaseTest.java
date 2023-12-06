@@ -74,6 +74,7 @@ public class BaseTest {
         newPlaylistNameField.clear();
         newPlaylistNameField.sendKeys(name);
         newPlaylistNameField.sendKeys(Keys.ENTER);
-        WebElement successBanner = driver.findElement(By.cssSelector(""));
+        WebElement successBanner = driver.findElement(By.cssSelector("div[ class='success show']"));
+        Assert.assertTrue(successBanner.isDisplayed());
     }
 }
