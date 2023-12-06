@@ -60,6 +60,8 @@ public class BaseTest {
     public void goToAllSongs () {
         WebElement allSongsBtn = driver.findElement(By.cssSelector("a[class='songs']"));
         allSongsBtn.click();
+        WebElement allSongsHeading = driver.findElement(By.xpath("//div[@class='heading-wrapper']/h1[contains(text(), 'All Songs')]"));
+        Assert.assertTrue(allSongsHeading.isDisplayed());
     }
 
     public void createPlaylist (String name) {
@@ -71,5 +73,6 @@ public class BaseTest {
         newPlaylistNameField.clear();
         newPlaylistNameField.sendKeys(name);
         newPlaylistNameField.sendKeys(Keys.ENTER);
+        WebElement successBanner = driver.findElement(By.cssSelector(""));
     }
 }
