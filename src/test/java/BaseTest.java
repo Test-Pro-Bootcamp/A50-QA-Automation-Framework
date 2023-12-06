@@ -61,6 +61,7 @@ public class BaseTest {
         WebElement allSongsBtn = driver.findElement(By.cssSelector("a[class='songs']"));
         allSongsBtn.click();
         WebElement allSongsHeading = driver.findElement(By.xpath("//div[@class='heading-wrapper']/h1[contains(text(), 'All Songs')]"));
+        Thread.sleep(3000);
         Assert.assertTrue(allSongsHeading.isDisplayed());
     }
 
