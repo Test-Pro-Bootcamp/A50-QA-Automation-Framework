@@ -77,4 +77,9 @@ public class BaseTest {
         WebElement successBanner = driver.findElement(By.cssSelector("div[ class='success show']"));
         Assert.assertTrue(successBanner.isDisplayed());
     }
+
+    public void selectSong (String title) {
+        WebElement song = driver.findElement(By.xpath("//td[contains(text(), '"+title+"')]"));
+    song.click();
+    }
 }
