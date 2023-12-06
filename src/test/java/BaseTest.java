@@ -39,6 +39,10 @@ public class BaseTest {
         getDriver().quit();
     }
 
+    public void logIn (String email, String password) {
+        
+    }
+
 
 
 }
