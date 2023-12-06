@@ -22,7 +22,7 @@ public class Homework17 extends BaseTest{
             ("#playlistWrapper>div>div>div>table>tr>td.title"));
     Assert.assertTrue(addedFirstSongFromAllSongs.isDisplayed());
     clickDeletePlaylist();
-
+    Thread.sleep(3000);
     WebElement notificationMessage = getDriver().findElement(By.cssSelector("div>div.success.show"));
     Assert.assertTrue(notificationMessage.isDisplayed());
 
