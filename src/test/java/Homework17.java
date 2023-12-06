@@ -11,7 +11,7 @@ import java.time.Duration;
 public class Homework17 extends BaseTest {
 
     @Test
-    public void addSongToPlaylist() {
+    public void addSongToPlaylist() throws InterruptedException {
     logIn("andrey.zlotnikov@testpro.io", "Man07hat01tan26!");
     goToAllSongs();
     createPlaylist("Playlist1");
