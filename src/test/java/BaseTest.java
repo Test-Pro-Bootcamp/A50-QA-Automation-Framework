@@ -1,5 +1,4 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.netty.util.internal.StringUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +11,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import java.time.Duration;
+
+import static java.lang.Thread.sleep;
 
 public class BaseTest {
 
@@ -60,8 +61,7 @@ public class BaseTest {
     public void goToAllSongs () {
         WebElement allSongsBtn = driver.findElement(By.cssSelector("a[class='songs']"));
         allSongsBtn.click();
-        WebElement allSongsHeading = driver.findElement(By.xpath("//div[@class='heading-wrapper']/h1[contains(text(), 'All Songs')]"));
-        Thread.sleep(3000);
+        WebElement allSongsHeading = driver.findElement(By.xpath("//h1[contains(text(), 'All Songs')]"));
         Assert.assertTrue(allSongsHeading.isDisplayed());
     }
 
