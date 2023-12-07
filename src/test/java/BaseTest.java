@@ -84,11 +84,12 @@ public class BaseTest {
         song.click();
     }
 
-    public void playSelectedSong (String title) {
+    public void playSelectedSong (String title) throws InterruptedException {
         Actions actions = new Actions(driver);
         WebElement song = driver.findElement(By.xpath("//td[contains(text(), '" + title + "')]"));
         actions.doubleClick(song).perform();
         WebElement pauseBtn = driver.findElement(By.cssSelector("[class='pause']"));
+        Thread.sleep(3000);
         Assert.assertTrue(pauseBtn.isDisplayed());
     }
 
