@@ -92,12 +92,13 @@ public class BaseTest {
         Assert.assertTrue(pauseBtn.isDisplayed());
     }
 
-    public void addSongToSelectedPlaylist (String playlistName) {
+    public void addSongToSelectedPlaylist  (String playlistName) throws InterruptedException {
         WebElement addToBtn = driver.findElement(By.cssSelector("button[class='btn-add-to']"));
         addToBtn.click();
         WebElement playlist = driver.findElement(By.xpath("//li[contains(text(), '"+playlistName+"')]"));
         playlist.click();
         WebElement successBanner = driver.findElement(By.cssSelector("div[class='success show']"));
+        Thread.sleep(3000);
         Assert.assertTrue(successBanner.isDisplayed());
 
     }
