@@ -88,7 +88,7 @@ public class BaseTest {
         Actions actions = new Actions(driver);
         WebElement song = driver.findElement(By.xpath("//td[contains(text(), '" + title + "')]"));
         actions.doubleClick(song).perform();
-        WebElement pauseBtn = driver.findElement(By.cssSelector("[class='pause']"));
+        WebElement pauseBtn = driver.findElement(By.cssSelector("span[data-testid='pause-btn']"));
         Thread.sleep(3000);
         Assert.assertTrue(pauseBtn.isDisplayed());
     }
@@ -99,7 +99,6 @@ public class BaseTest {
         WebElement playlist = driver.findElement(By.xpath("//li[contains(text(), '"+playlistName+"')]"));
         playlist.click();
         WebElement successBanner = driver.findElement(By.cssSelector("div[class='success show']"));
-        Thread.sleep(3000);
         Assert.assertTrue(successBanner.isDisplayed());
 
     }
