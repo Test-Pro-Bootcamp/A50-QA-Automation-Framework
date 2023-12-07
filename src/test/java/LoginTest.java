@@ -17,16 +17,16 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginUserTest() {
 
-        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
+        WebElement emailField = getDriver().findElement(By.cssSelector("input[type='email']"));
         emailField.sendKeys("son.nam.kim@testpro.io");
 
-        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
+        WebElement passwordField = getDriver().findElement(By.cssSelector("input[type='password']"));
         passwordField.sendKeys("koel08/23");
 
-        WebElement loginButton = driver.findElement(By.cssSelector("button[type='submit']"));
+        WebElement loginButton = getDriver().findElement(By.cssSelector("button[type='submit']"));
         loginButton.click();
 
-        WebElement logOutButton = driver.findElement(By.cssSelector("a[data-testid='btn-logout']>i"));
+        WebElement logOutButton = getDriver().findElement(By.cssSelector("a[data-testid='btn-logout']>i"));
         Assert.assertTrue(logOutButton.isDisplayed());
     }
 }
