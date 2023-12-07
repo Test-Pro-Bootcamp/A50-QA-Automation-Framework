@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -83,10 +84,24 @@ public class BaseTest {
         song.click();
     }
 
-    public void addSongToSelectedPlaylist (String playlistName) {
+
+    public void playSelectedSong (String title) throws InterruptedException {
+        Actions actions = new Actions(driver);
+        WebElement song = driver.findElement(By.xpath("//td[contains(text(), '" + title + "')]"));
+        actions.doubleClick(song).perform();
+        WebElement pauseBtn = driver.findElement(By.cssSelector("span[data-testid='pause-btn']"));
+        actions.moveToElement(pauseBtn).perform();
+        Thread.sleep(3000);
+        Assert.assertTrue(pauseBtn.isDisplayed());
+        WebElement bannerOfPlayingSong = driver.findElement(By.xpath("//h3[contains(text(), '" + title + "')]"));
+        String titleOfPlayingSong = bannerOfPlayingSong.getText();
+        Assert.assertEquals(titleOfPlayingSong, title);
+    }
+
+    public void addSongToSelectedPlaylist  (String playlistName) throws InterruptedException {
         WebElement addToBtn = driver.findElement(By.cssSelector("button[class='btn-add-to']"));
         addToBtn.click();
-        WebElement playlist = driver.findElement(By.xpath("//li[contains(text(), '"+playlistName+"')]"));
+        WebElement playlist = driver.findElement(By.xpath("//li[contains(text(), '" + playlistName + "')]"));
         playlist.click();
         WebElement successBanner = driver.findElement(By.cssSelector("div[class='success show']"));
         Assert.assertTrue(successBanner.isDisplayed());
