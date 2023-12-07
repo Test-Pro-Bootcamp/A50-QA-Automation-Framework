@@ -84,6 +84,7 @@ public class BaseTest {
         song.click();
     }
 
+
     public void playSelectedSong (String title) throws InterruptedException {
         Actions actions = new Actions(driver);
         WebElement song = driver.findElement(By.xpath("//td[contains(text(), '" + title + "')]"));
@@ -106,6 +107,5 @@ public class BaseTest {
         Assert.assertTrue(successBanner.isDisplayed());
 
     }
-
 
 }
