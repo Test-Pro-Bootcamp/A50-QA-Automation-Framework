@@ -89,6 +89,7 @@ public class BaseTest {
         WebElement song = driver.findElement(By.xpath("//td[contains(text(), '" + title + "')]"));
         actions.doubleClick(song).perform();
         WebElement pauseBtn = driver.findElement(By.cssSelector("span[data-testid='pause-btn']"));
+        actions.moveToElement(pauseBtn).perform();
         Thread.sleep(3000);
         Assert.assertTrue(pauseBtn.isDisplayed());
     }
