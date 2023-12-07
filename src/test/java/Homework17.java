@@ -13,10 +13,10 @@ public class Homework17 extends BaseTest {
     @Test
     public void addSongToPlaylist() throws InterruptedException {
     logIn("demo@class.com", "te$t$tudent");
-    createPlaylist("Playlist7");
+    createPlaylist("Playlist25");
     goToAllSongs();
-    selectSong("Pluto");
-    addSongToSelectedPlaylist("Playlist7");
+    selectSong("BornKing");
+    addSongToSelectedPlaylist("Playlist25");
 
     }
 }
