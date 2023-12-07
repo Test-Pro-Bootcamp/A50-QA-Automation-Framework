@@ -88,6 +88,8 @@ public class BaseTest {
         Actions actions = new Actions(driver);
         WebElement song = driver.findElement(By.xpath("//td[contains(text(), '" + title + "')]"));
         actions.doubleClick(song).perform();
+        WebElement pauseBtn = driver.findElement(By.cssSelector("[class='pause']"));
+        Assert.assertTrue(pauseBtn.isDisplayed());
     }
 
     public void addSongToSelectedPlaylist (String playlistName) {

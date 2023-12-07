@@ -1,3 +1,4 @@
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Homework18 extends BaseTest {
@@ -7,6 +8,7 @@ public class Homework18 extends BaseTest {
         logIn("andrey.zlotnikov@testpro.io", "Man07hat01tan26!");
         goToAllSongs();
         playSelectedSong("BossStatus");
+
 
     }
 
