@@ -5,7 +5,7 @@ public class Homework18 extends BaseTest {
 
     @Test
     public void playSong() throws InterruptedException {
-        logIn("andrey.zlotnikov@testpro.io", "Man07hat01tan26!");
+        logIn("demo@class.com", "te$t$tudent");
         goToAllSongs();
         playSelectedSong("BossStatus");
 
