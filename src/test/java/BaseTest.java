@@ -8,10 +8,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 import java.time.Duration;
 
-public class BaseTest {
+public abstract class BaseTest {
 
     private WebDriver driver = null;
     protected String url = "https://qa.koel.app/";
@@ -21,14 +22,15 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
     }
 
-    @BeforeMethod
-    public void setupDriver() {
+    @BeforeMethod // setupDriver()
+    @Parameters({"baseUrl"})
+    public void setupDriver(String baseUrl) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get(url); //open page
+        driver.get(baseUrl); //open page
     }
 
     public WebDriver getDriver() {
@@ -42,11 +44,13 @@ public class BaseTest {
 
     public void enterEmail(String email) {
         WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));// or xpath
+        emailField.clear();
         emailField.sendKeys(email);
     }
 
     public void enterPassword(String password) {
         WebElement passwordField = getDriver().findElement(By.cssSelector("input[type='password']"));
+        passwordField.clear();
         passwordField.sendKeys(password);
     }
 
