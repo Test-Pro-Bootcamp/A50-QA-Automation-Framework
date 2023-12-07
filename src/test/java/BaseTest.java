@@ -100,7 +100,7 @@ public class BaseTest {
     public void addSongToSelectedPlaylist  (String playlistName) throws InterruptedException {
         WebElement addToBtn = driver.findElement(By.cssSelector("button[class='btn-add-to']"));
         addToBtn.click();
-        WebElement playlist = driver.findElement(By.xpath("//li[contains(text(), '"+ playlistName +"')]"));
+        WebElement playlist = driver.findElement(By.xpath("//li[contains(text(), '" + playlistName + "')]"));
         playlist.click();
         WebElement successBanner = driver.findElement(By.cssSelector("div[class='success show']"));
         Assert.assertTrue(successBanner.isDisplayed());
