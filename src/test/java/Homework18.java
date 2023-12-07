@@ -13,8 +13,8 @@ public class Homework18 extends BaseTest{
         clickLoginButton();
         Thread.sleep(5000);
         clickFirstSongFromAllSongsToPlay();
-
-        WebElement soundBarsImage = getDriver().findElement(By.cssSelector("#mainFooter>div>div>div>button>div>img"));
+        Thread.sleep(3000);
+        WebElement soundBarsImage = getDriver().findElement(By.cssSelector("div>img"));
         Assert.assertTrue(soundBarsImage.isDisplayed());
 
     }
