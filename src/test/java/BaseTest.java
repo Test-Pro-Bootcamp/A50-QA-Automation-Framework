@@ -92,6 +92,9 @@ public class BaseTest {
         actions.moveToElement(pauseBtn).perform();
         Thread.sleep(3000);
         Assert.assertTrue(pauseBtn.isDisplayed());
+        WebElement bannerOfPlayingSong = driver.findElement(By.xpath("//h3[contains(text(), '"+ title +")]"));
+        String titleOfPlayingSong = bannerOfPlayingSong.getText();
+        Assert.assertEquals(titleOfPlayingSong, title);
     }
 
     public void addSongToSelectedPlaylist  (String playlistName) throws InterruptedException {

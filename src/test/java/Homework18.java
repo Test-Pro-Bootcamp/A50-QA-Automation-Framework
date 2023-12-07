@@ -9,7 +9,6 @@ public class Homework18 extends BaseTest {
         goToAllSongs();
         playSelectedSong("BossStatus");
 
-
     }
 
 }
