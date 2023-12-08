@@ -118,7 +118,7 @@ public class BaseTest {
         Thread.sleep(3000);
         WebElement deletePlaylistBtn = driver.findElement(By.cssSelector("[class='del btn-delete-playlist']"));
         deletePlaylistBtn.click();
-        WebElement successBanner = driver.findElement(By.xpath("//div[contains(text(), 'Deleted playlist + " + playlistName +"')]"));
+        WebElement successBanner = driver.findElement(By.xpath("//div[contains(text(), 'Deleted playlist' + '" + playlistName +"')]"));
         Assert.assertTrue(successBanner.isDisplayed());
     }
 
