@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 import java.time.Duration;
 
@@ -20,12 +21,14 @@ public class BaseTest {
     protected WebDriver driver = null;
     protected String url = "https://qa.koel.app/";
     @BeforeMethod
-    public void setupDriver() {
+    @Parameters({"BaseURL"})
+    public void setupDriver(String BaseURL) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        url = BaseURL;
         driver.get(url); //open page
     }
 
