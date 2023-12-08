@@ -27,7 +27,7 @@ test {
 //    }
 //}
 //
-//test regressioTest {
+//test regressionTest {
 //    useTestNG() {
 //        suites "src/test/resources/Regression.xml"
 //    }
