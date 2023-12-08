@@ -6,7 +6,7 @@ public class Homework19 extends BaseTest {
     public void deletePlaylist () throws InterruptedException {
         logIn("andrey.zlotnikov@testpro.io", "Man07hat01tan26!");
         createPlaylist("Experimental");
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         deleteSelectedPlaylist("Experimental");
 
     }
