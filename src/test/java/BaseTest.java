@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -16,6 +17,7 @@ public abstract class BaseTest {
 
     private WebDriver driver = null;
     protected String url = "https://qa.koel.app/";
+    WebDriverWait explicitWait = null;
 
     @BeforeSuite
     static void setupClass() {
@@ -27,10 +29,12 @@ public abstract class BaseTest {
     public void setupDriver(String baseUrl) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver(options); //driver = ChromeDriver instance
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get(baseUrl); //open page
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));// one time
+        driver.manage().window().fullscreen();
+        driver.get(url); //open page
+        explicitWait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
     }
 
     public WebDriver getDriver() {
