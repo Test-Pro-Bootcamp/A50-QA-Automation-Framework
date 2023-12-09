@@ -3,6 +3,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,7 +18,8 @@ public class RenameUserProfileTest extends BaseTest {
     public void renameUserTest() throws InterruptedException {
         String newName = UUID.randomUUID().toString();
         loginKoel("demo@class.com", "te$t$tudent");
-        Thread.sleep(5000);
+
+        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));
 
         WebElement avatar = getDriver().findElement(By.cssSelector("img[class='avatar']"));
         avatar.click();
@@ -30,7 +34,7 @@ public class RenameUserProfileTest extends BaseTest {
         WebElement saveButton = getDriver().findElement(By.cssSelector(".btn-submit"));
         saveButton.click();
 
-        Thread.sleep(3000);
+        explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(@class, 'success')]")));
 
         WebElement viewProfileElement = getDriver().findElement(By.cssSelector("a[data-testid='view-profile-link']"));
 
