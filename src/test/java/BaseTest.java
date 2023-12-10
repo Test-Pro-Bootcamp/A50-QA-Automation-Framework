@@ -6,17 +6,18 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
-
 import java.time.Duration;
 
 public class BaseTest {
 
     private WebDriver driver = null;
     protected String url = "https://qa.koel.app/";
+    WebDriverWait explicitWait = null;
 
     @BeforeSuite
     static void setupClass() {WebDriverManager.chromedriver().setup();}
@@ -30,8 +31,10 @@ public class BaseTest {
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
+        explicitWait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         driver.get(baseUrl);
+        driver.manage().window().fullscreen(); //added to maximize to original screen size
+
     }
 
     public WebDriver getDriver() {
@@ -72,7 +75,6 @@ public class BaseTest {
         WebElement inputTypeText = getDriver().findElement(By.cssSelector("form[class='create']>input"));
         inputTypeText.sendKeys("NewP");
         inputTypeText.sendKeys(Keys.ENTER);
-
     }
     public void addSongIntoUserPlaylist() {
         WebElement playlistAllSongs = getDriver().findElement(By.cssSelector("a[class='songs']"));
@@ -92,7 +94,6 @@ public class BaseTest {
         WebElement createdPlaylistNewP = getDriver().findElement(By.cssSelector
                 ("#playlists > ul > li:nth-child(4) > a"));
         createdPlaylistNewP.click();
-
     }
         public void clickDeletePlaylist(){
 
@@ -117,7 +118,5 @@ public class BaseTest {
 
         WebElement dropDownMenuPlayButton = getDriver().findElement(By.cssSelector("#app>nav>ul>li.playback"));
         dropDownMenuPlayButton.click();
-
     }
-
 }
