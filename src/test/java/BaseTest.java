@@ -30,7 +30,7 @@ public class BaseTest {
         options.addArguments("--remote-allow-origins=*");
 
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));  //implicitlyWait is instantiated once for all tests in helperTest
         explicitWait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         driver.get(baseUrl);
         driver.manage().window().fullscreen(); //added to maximize to original screen size
