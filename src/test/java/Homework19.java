@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 public class Homework19 extends BaseTest{
     @Test(testName = "Delete Created Playlist", groups = {"Smoke","Regression"})
     public void deletePlaylist() throws InterruptedException {
-
         loginKoel("son.nam.kim@testpro.io", "koel08/23");
         Thread.sleep(5000);
         createPlaylist();
