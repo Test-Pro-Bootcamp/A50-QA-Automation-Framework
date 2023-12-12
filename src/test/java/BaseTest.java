@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -69,8 +70,10 @@ public class BaseTest {
         WebElement plusSign = getDriver().findElement(By.cssSelector("i[data-testid='sidebar-create-playlist-btn']"));
         plusSign.click();
 
-        WebElement buttonNewPlaylist = getDriver().findElement(By.cssSelector("li[data-testid='playlist-context-menu-create-simple']"));
-        buttonNewPlaylist.click();
+        WebElement buttonNewPlaylist = getDriver().findElement
+                (By.cssSelector("li[data-testid='playlist-context-menu-create-simple']"));
+        explicitWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector
+                ("li[data-testid='playlist-context-menu-create-simple']"))).click();
 
         WebElement inputTypeText = getDriver().findElement(By.cssSelector("form[class='create']>input"));
         inputTypeText.sendKeys("NewP");
@@ -95,7 +98,7 @@ public class BaseTest {
                 ("#playlists > ul > li:nth-child(4) > a"));
         createdPlaylistNewP.click();
     }
-        public void clickDeletePlaylist(){
+    public void clickDeletePlaylist(){
 
         WebElement createdPlaylistNewP = getDriver().findElement(By.cssSelector
                     ("#playlists > ul > li:nth-child(4) > a"));
@@ -119,4 +122,20 @@ public class BaseTest {
         WebElement dropDownMenuPlayButton = getDriver().findElement(By.cssSelector("#app>nav>ul>li.playback"));
         dropDownMenuPlayButton.click();
     }
+    public void rightClickCreatedPlaylist(){
+        WebElement createdPlaylistNewP = explicitWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector
+                ("#playlists > ul > li:nth-child(4) > a")));
+        Actions actions = new Actions(getDriver());
+        actions.contextClick(createdPlaylistNewP).perform();
+        WebElement editCreatedPlaylist = getDriver().findElement(By.cssSelector("nav>ul>li:nth-child(1)"));
+        editCreatedPlaylist.click();
+    }
+    public void renamePlaylistName(){
+        WebElement inputFieldToRenamePlaylist = getDriver().findElement(By.cssSelector("input[name='name']"));
+        inputFieldToRenamePlaylist.clear();
+        inputFieldToRenamePlaylist.sendKeys("SNP");
+        inputFieldToRenamePlaylist.sendKeys(Keys.ENTER);
+
+    }
+
 }
