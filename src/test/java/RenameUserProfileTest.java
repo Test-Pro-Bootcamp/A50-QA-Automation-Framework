@@ -38,6 +38,8 @@ public class RenameUserProfileTest extends BaseTest {
 
         WebElement viewProfileElement = getDriver().findElement(By.cssSelector("a[data-testid='view-profile-link']"));
 
+        avatar = getDriver().findElement(By.cssSelector("img[class='avatar']"));
         Assert.assertEquals(viewProfileElement.getText(), newName);
+        Assert.assertTrue(avatar.isDisplayed());
     }
 }
