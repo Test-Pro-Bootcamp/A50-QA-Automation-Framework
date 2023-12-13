@@ -1,8 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -19,6 +16,7 @@ public class BaseTest {
     private WebDriver driver = null;
     protected String url = "https://qa.koel.app/";
     WebDriverWait explicitWait = null;
+    Actions actions = null;
 
     @BeforeSuite
     static void setupClass() {WebDriverManager.chromedriver().setup();}
@@ -32,10 +30,10 @@ public class BaseTest {
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));  //implicitlyWait is instantiated once for all tests in helperTest
-        explicitWait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         driver.get(baseUrl);
         driver.manage().window().fullscreen(); //added to maximize to original screen size
-
+        explicitWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        actions = new Actions(driver);
     }
 
     public WebDriver getDriver() {
@@ -122,19 +120,27 @@ public class BaseTest {
         WebElement dropDownMenuPlayButton = getDriver().findElement(By.cssSelector("#app>nav>ul>li.playback"));
         dropDownMenuPlayButton.click();
     }
-    public void rightClickCreatedPlaylist(){
-        WebElement createdPlaylistNewP = explicitWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector
-                ("#playlists > ul > li:nth-child(4) > a")));
-        Actions actions = new Actions(getDriver());
+    public void contextClickCreatedPlaylist(){
+        WebElement createdPlaylistNewP = explicitWait.until(ExpectedConditions.elementToBeClickable
+                (By.xpath("//section[@id='playlists']/ul/li[4]/a")));
         actions.contextClick(createdPlaylistNewP).perform();
-        WebElement editCreatedPlaylist = getDriver().findElement(By.cssSelector("nav>ul>li:nth-child(1)"));
-        editCreatedPlaylist.click();
     }
-    public void renamePlaylistName(){
-        WebElement inputFieldToRenamePlaylist = getDriver().findElement(By.cssSelector("input[name='name']"));
-        inputFieldToRenamePlaylist.clear();
-        inputFieldToRenamePlaylist.sendKeys("SNP");
-        inputFieldToRenamePlaylist.sendKeys(Keys.ENTER);
+
+    public void changePlaylistName(){
+        WebElement editCreatedPlaylistButton = explicitWait.until(ExpectedConditions.elementToBeClickable
+                (By.xpath("//ul/li[4]/nav/ul/li[1]")));
+        actions.moveToElement(editCreatedPlaylistButton).click().perform();
+        WebElement inputFieldForCreatedPlaylist = explicitWait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.cssSelector("input[name='name']")));
+        inputFieldForCreatedPlaylist.sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT, Keys.END), "SNP");
+        inputFieldForCreatedPlaylist.sendKeys(Keys.ENTER);
+
+    }
+    public String getChangedPlaylistName(){
+        WebElement newPlaylistName = explicitWait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.cssSelector("ul>li:nth-child(4)>a.active")));
+        String name = newPlaylistName.getText();
+        return name;
 
     }
 
