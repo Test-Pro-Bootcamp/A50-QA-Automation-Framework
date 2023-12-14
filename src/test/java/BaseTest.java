@@ -132,7 +132,9 @@ public class BaseTest {
         actions.moveToElement(editCreatedPlaylistButton).click().perform();
         WebElement inputFieldForCreatedPlaylist = explicitWait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.cssSelector("input[name='name']")));
-        inputFieldForCreatedPlaylist.sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT, Keys.END), "SNP");
+        inputFieldForCreatedPlaylist.click();
+        inputFieldForCreatedPlaylist.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.BACK_SPACE));
+        inputFieldForCreatedPlaylist.sendKeys("SNP");
         inputFieldForCreatedPlaylist.sendKeys(Keys.ENTER);
 
     }
