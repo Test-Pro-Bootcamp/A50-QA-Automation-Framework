@@ -22,7 +22,6 @@ public class PlayListTest extends BaseTest {
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(playListLocatorByName, playListName))));
         List<WebElement> playLists = getDriver().findElements(By.xpath("//li[contains(@class, 'playlist')]"));
         deletePlayListByName(playLists, playListName);
-//        List<WebElement> playLists = getDriver().findElements(By.xpath("//li[contains(@class, 'playlist')]"));
         Assert.assertFalse(playLists.contains(playListName));
     }
 
