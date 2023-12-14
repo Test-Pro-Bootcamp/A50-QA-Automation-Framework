@@ -1,3 +1,5 @@
+package com.qa.koel;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -5,9 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.UUID;
 
 public class PlayListTest extends BaseTest {
@@ -16,7 +16,7 @@ public class PlayListTest extends BaseTest {
     public void deletePlayList() {
         String playListName = UUID.randomUUID().toString();
         String playListLocatorByName = "//a[contains(text(),'%s')]";
-        loginKoel("demo@class.com", "te$t$tudent");
+        new LoginPage(getDriver()).loginKoel("demo@class.com", "te$t$tudent");
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("i[data-testid='sidebar-create-playlist-btn']")));
         createPlayList(playListName);
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(playListLocatorByName, playListName))));

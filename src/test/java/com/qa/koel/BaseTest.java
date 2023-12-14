@@ -1,3 +1,5 @@
+package com.qa.koel;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.netty.util.internal.StringUtil;
 import org.openqa.selenium.By;
@@ -16,10 +18,10 @@ import java.time.Duration;
 
 public abstract class BaseTest {
 
-    private WebDriver driver = null; // not null after running line 34
+    private WebDriver driver; // not null after running line 34
     protected String url = "https://qa.koel.app/";
-    WebDriverWait explicitWait = null;
-    Actions actions = null;
+    WebDriverWait explicitWait;
+    Actions actions;
 
     @BeforeSuite
     static void setupClass() {
@@ -49,26 +51,4 @@ public abstract class BaseTest {
         getDriver().quit();
     }
 
-    public void enterEmail(String email) {
-        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));// or xpath
-        emailField.clear();
-        emailField.sendKeys(email);
-    }
-
-    public void enterPassword(String password) {
-        WebElement passwordField = getDriver().findElement(By.cssSelector("input[type='password']"));
-        passwordField.clear();
-        passwordField.sendKeys(password);
-    }
-
-    public void clickLoginButton() {
-        WebElement loginButton = getDriver().findElement(By.cssSelector("button[type='submit']"));
-        loginButton.click();
-    }
-
-    public void loginKoel(String email, String password) {
-        enterEmail(email);
-        enterPassword(password);
-        clickLoginButton();
-    }
 }
