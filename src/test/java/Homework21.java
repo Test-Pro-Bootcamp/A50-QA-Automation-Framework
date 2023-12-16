@@ -13,6 +13,6 @@ public class Homework21 extends BaseTest{
         contextClickCreatedPlaylist();
         changePlaylistName();
         getChangedPlaylistName();
-        Assert.assertEquals("SNP","SNP");
+        Assert.assertEquals("NewP","SNP");
     }
 }
