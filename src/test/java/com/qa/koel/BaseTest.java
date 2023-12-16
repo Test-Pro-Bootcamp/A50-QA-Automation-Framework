@@ -20,7 +20,6 @@ public abstract class BaseTest {
 
     private WebDriver driver; // not null after running line 34
     protected String url = "https://qa.koel.app/";
-    WebDriverWait explicitWait;
     Actions actions;
 
     @BeforeSuite
@@ -38,7 +37,6 @@ public abstract class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));// one time
         driver.manage().window().fullscreen();
         driver.get(url); //open page
-        explicitWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
     }
 

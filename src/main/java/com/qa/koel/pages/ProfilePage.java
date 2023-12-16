@@ -1,4 +1,4 @@
-package com.qa.koel;
+package com.qa.koel.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

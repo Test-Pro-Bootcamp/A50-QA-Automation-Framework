@@ -1,4 +1,4 @@
-package com.qa.koel;
+package com.qa.koel.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -25,9 +25,13 @@ public class LoginPage extends BasePage {
         passwordField.sendKeys(password);
     }
 
-    private void clickLoginButton() {
+    public WebElement getSubmitButton() {
         WebElement loginButton = pageDriver.findElement(LOGIN_BUTTON);
-        loginButton.click();
+        return loginButton;
+    }
+
+    private void clickLoginButton() {
+        getSubmitButton().click();
     }
 
     public void loginKoel(String email, String password) {
