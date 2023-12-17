@@ -65,17 +65,20 @@ public class BaseTest {
         clickLoginButton();
     }
     public void createPlaylist(){
-        WebElement plusSign = getDriver().findElement(By.cssSelector("i[data-testid='sidebar-create-playlist-btn']"));
-        plusSign.click();
+        WebElement plusSign = explicitWait.until(ExpectedConditions.elementToBeClickable
+                (By.cssSelector("i[data-testid='sidebar-create-playlist-btn']")));
+        actions.click(plusSign).perform();
+        explicitWait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.cssSelector("li[data-testid='playlist-context-menu-create-simple']")));
 
-        WebElement buttonNewPlaylist = getDriver().findElement
-                (By.cssSelector("li[data-testid='playlist-context-menu-create-simple']"));
-        explicitWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector
-                ("li[data-testid='playlist-context-menu-create-simple']"))).click();
+        WebElement optionNewPlaylist = explicitWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector
+                ("li[data-testid='playlist-context-menu-create-simple']")));
+        actions.click(optionNewPlaylist).perform();
 
         WebElement inputTypeText = getDriver().findElement(By.cssSelector("form[class='create']>input"));
         inputTypeText.sendKeys("NewP");
         inputTypeText.sendKeys(Keys.ENTER);
+        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#playlists > ul > li:nth-child(4) > a")));
     }
     public void addSongIntoUserPlaylist() {
         WebElement playlistAllSongs = getDriver().findElement(By.cssSelector("a[class='songs']"));
@@ -125,18 +128,17 @@ public class BaseTest {
                 (By.xpath("//section[@id='playlists']/ul/li[4]/a")));
         actions.contextClick(createdPlaylistNewP).perform();
     }
-
     public void changePlaylistName(){
-        WebElement editCreatedPlaylistButton = explicitWait.until(ExpectedConditions.elementToBeClickable
-                (By.xpath("//ul/li[4]/nav/ul/li[1]")));
+        WebElement editCreatedPlaylistButton = driver.findElement
+                (By.xpath("//ul/li[4]/nav/ul/li[1]"));
         actions.moveToElement(editCreatedPlaylistButton).click().perform();
+        explicitWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("input[name='name']")));
         WebElement inputFieldForCreatedPlaylist = explicitWait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.cssSelector("input[name='name']")));
         inputFieldForCreatedPlaylist.click();
         inputFieldForCreatedPlaylist.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.BACK_SPACE));
-        inputFieldForCreatedPlaylist.sendKeys("SNP");
+        inputFieldForCreatedPlaylist.sendKeys("SimpleNP");
         inputFieldForCreatedPlaylist.sendKeys(Keys.ENTER);
-
     }
     public String getChangedPlaylistName(){
         WebElement newPlaylistName = explicitWait.until(ExpectedConditions.visibilityOfElementLocated
