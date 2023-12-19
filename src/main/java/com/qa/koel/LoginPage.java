@@ -11,18 +11,18 @@ public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
         super(driver);
     }
-    private void enterEmail(String email){  //private because we use it only inside this class
-        WebElement emailField = pageDriver().findElement(EMAIL_FIELD);
+    public void enterEmail(String email){  //private because we use it only inside this class
+        WebElement emailField = pageDriver.findElement(EMAIL_FIELD);
         emailField.clear();
         emailField.sendKeys(email);
     }
-    private void enterPassword(String password){
-        WebElement passwordField = pageDriver().findElement(PASSWORD_FIELD);
+    public void enterPassword(String password){
+        WebElement passwordField = pageDriver.findElement(PASSWORD_FIELD);
         passwordField.clear();
         passwordField.sendKeys(password);
     }
-    private void clickLoginButton(){
-        WebElement loginButton = pageDriver().findElement(LOGIN_BUTTON);
+    public void clickLoginButton(){
+        WebElement loginButton = pageDriver.findElement(LOGIN_BUTTON);
         loginButton.click();
     }
     public void loginKoel(String email,String password){

@@ -5,13 +5,13 @@
 <parameter name="baseUrl" value="https://qa.koel.app/"></parameter>
     <test name="Example Test" preserve-order="false">
         <classes>
-            <class name="com.Homework20">
+            <class name="com.qa.koel.Homework20">
                 <methods>
                     <include name="deletePlaylist"></include>
                 </methods>
             </class>
-<!--            <class name="com.Homework19">-->
-            <class name="com.Homework21"></class>
+<!--            <class name="com.qa.koel.Homework19">-->
+            <class name="com.qa.koel.Homework21"></class>
 <!--            <class name="Homework20">-->
 <!--                <methods>-->
 <!--                    <include name="deletePlaylist"></include>-->
@@ -22,10 +22,10 @@
 <!--                    <include name="deletePlaylist"></include>-->
 <!--                </methods>-->
 <!--            </class>-->
-<!--            <class name="com.Homework18"/>-->
-<!--            <class name="com.Homework17"/>-->
-<!--            <class name="com.LoginTests"/>-->
-<!--            <class name="com.BaseTest"/>-->
+<!--            <class name="com.qa.koel.Homework18"/>-->
+<!--            <class name="com.qa.koel.Homework17"/>-->
+<!--            <class name="com.qa.koel.LoginTests"/>-->
+<!--            <class name="com.qa.koel.BaseTest"/>-->
         </classes>
     </test>
 </suite>

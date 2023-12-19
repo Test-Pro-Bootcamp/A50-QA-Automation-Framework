@@ -13,7 +13,7 @@ public class HomePage extends BasePage {
         super(driver);
     }
     public WebElement getLogOutButton(){
-        return pageDriver().findElement(LOGOUT_BUTTON);
+        return pageDriver.findElement(LOGOUT_BUTTON);
     }
     public WebElement getAvatar(){
         WebElement avatar = pageDriver.findElement(AVATAR);
@@ -22,4 +22,5 @@ public class HomePage extends BasePage {
     public WebElement getViewProfileElement(){
         return pageDriver.findElement(VIEW_PROFILE_NAME_ELEMENT);
     }
+
 }

@@ -14,17 +14,17 @@ public class ProfilePage extends BasePage {
 
     }
     void fillInCurrentPassword(String password){
-        WebElement currentPasswordField = pageDriver().findElement(CURRENT_PASSWORD_FIELD);
+        WebElement currentPasswordField = pageDriver.findElement(CURRENT_PASSWORD_FIELD);
         currentPasswordField.sendKeys(password);
     }
     void changeProfileNameFieldValue(String newName){
-        WebElement profileNameField = pageDriver().findElement(PROFILE_NAME_FIELD);
+        WebElement profileNameField = pageDriver.findElement(PROFILE_NAME_FIELD);
         profileNameField.clear();
         profileNameField.sendKeys(newName);
 
     }
     void clickSaveButton() {
-        WebElement saveButton = pageDriver().findElement(SAVE_BUTTON);
+        WebElement saveButton = pageDriver.findElement(SAVE_BUTTON);
         saveButton.click();
     }
 

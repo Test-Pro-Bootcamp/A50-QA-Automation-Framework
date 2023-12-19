@@ -1,10 +1,9 @@
-package com;
+package com.qa.koel;
 
+import com.qa.koel.BaseTest;
 import com.qa.koel.HomePage;
 import com.qa.koel.LoginPage;
-import io.netty.util.internal.StringUtil;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -13,7 +12,7 @@ import org.testng.annotations.Test;
 public class LoginTests extends BaseTest {
     LoginPage loginPage;
     HomePage homePage;
-    @Test(dataProviderClass = ParameterProvider.class, dataProvider = "incorrectCredentialValues", testName = "Login with empty email and password test", groups = "Regression")
+    @Test(testName = "Login with empty email and password test", groups = "Regression")
     public void loginEmptyEmailPassword(String email,String password) {
          loginPage = new LoginPage(getDriver());
         loginPage.loginKoel(email, password);
@@ -29,6 +28,6 @@ public class LoginTests extends BaseTest {
         loginPage.enterPassword("koel08/23");
         loginPage.clickLoginButton();
 
-        Assert.assertTrue(homePage.logOutButton.isDisplayed());
+        Assert.assertTrue(homePage.getLogOutButton().isDisplayed());
     }
 }

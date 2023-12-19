@@ -1,11 +1,12 @@
-package com;
+package com.qa.koel;
 
+import com.qa.koel.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Homework18 extends BaseTest{
+public class Homework18 extends BaseTest {
 
     @Test(testName = "Play A Song", groups = {"Smoke","Regression"})
 

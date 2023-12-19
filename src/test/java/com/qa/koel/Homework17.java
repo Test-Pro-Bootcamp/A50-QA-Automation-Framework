@@ -1,30 +1,32 @@
-package com;
+package com.qa.koel;
 
+import com.qa.koel.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Homework17 extends BaseTest{
-
+public class Homework17 extends BaseTest {
+LoginPage loginPage;
 @Test(testName = "Add a song to the playlist", groups = "Smoke")
-  public void addSongToPlaylist() throws InterruptedException {
+  public void addSongToPlaylist(){
+    loginPage = new LoginPage(getDriver());
+    loginPage.loginKoel("son.nam.kim@testpro.io","koel08/23");
+//    enterEmail("son.nam.kim@testpro.io");
+//    enterPassword("koel08/23");
+//    clickLoginButton();
 
-    enterEmail("son.nam.kim@testpro.io");
-    enterPassword("koel08/23");
-    clickLoginButton();
-
-    Thread.sleep(5000);
+    //Thread.sleep(5000);
     createPlaylist();
 
-    Thread.sleep(5000);
+    //Thread.sleep(5000);
     addSongIntoUserPlaylist();
-    Thread.sleep(5000);
+    //Thread.sleep(5000);
     WebElement addedFirstSongFromAllSongs = getDriver().findElement(By.cssSelector
             ("#playlistWrapper>div>div>div>table>tr>td.title"));
     Assert.assertTrue(addedFirstSongFromAllSongs.isDisplayed());
     clickDeletePlaylist();
-    Thread.sleep(3000);
+    //Thread.sleep(3000);
     WebElement notificationMessage = getDriver().findElement(By.cssSelector("div>div.success.show"));
     Assert.assertTrue(notificationMessage.isDisplayed());
 
