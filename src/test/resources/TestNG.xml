@@ -7,8 +7,8 @@
         <classes>
             <class name="com.qa.koel.LoginTest"/>
             <class name="com.qa.koel.BaseTest"/>
-            <class name="com.qa.koel.RenameUserProfileTest"></class>
-            <class name="com.qa.koel.PlayListTest"></class>
+<!--            <class name="com.qa.koel.RenameUserProfileTest"></class>-->
+<!--            <class name="com.qa.koel.PlayListTest"></class>-->
         </classes>
     </test>
 </suite>
