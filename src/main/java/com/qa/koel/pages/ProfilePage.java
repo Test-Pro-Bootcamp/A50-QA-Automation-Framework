@@ -14,19 +14,19 @@ public class ProfilePage extends BasePage {
         super(driver);
     }
 
-    void fillCurrentPassword(String password){
+    public void fillCurrentPassword(String password){
         WebElement currentPasswordField = pageDriver.findElement(CURRENT_PASSWORD_FIELD);
         currentPasswordField.sendKeys(password);
     }
 
-    void changeProfileNameFieldValue(String newName) {
+    public void changeProfileNameFieldValue(String newName) {
         WebElement profileNameField = pageDriver.findElement(PROFILE_NAME_FIELD);
         profileNameField.clear();
         profileNameField.sendKeys(newName);
     }
 
 
-    void clickSaveButton() {
+    public void clickSaveButton() {
         WebElement saveButton = pageDriver.findElement(SAVE_BUTTON);
         saveButton.click();
     }
