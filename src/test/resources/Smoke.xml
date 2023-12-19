@@ -5,8 +5,8 @@
 
     <test name="Smoke Test" preserve-order="false">
         <classes>
-            <class name="Homework17"/>
-<!--            <class name="LoginTests">-->
+            <class name="com.Homework17"/>
+<!--            <class name="com.LoginTests">-->
 <!--                <methods>-->
 <!--                    <include name="loginUserTest"/>-->
 <!--                </methods>-->

@@ -1,3 +1,5 @@
+package com;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -13,10 +15,10 @@ import java.time.Duration;
 
 public class BaseTest {
 
-    private WebDriver driver = null;
+    private WebDriver driver;
     protected String url = "https://qa.koel.app/";
-    WebDriverWait explicitWait = null;
-    Actions actions = null;
+    WebDriverWait explicitWait;
+    Actions actions;
 
     @BeforeSuite
     static void setupClass() {WebDriverManager.chromedriver().setup();}
@@ -30,6 +32,7 @@ public class BaseTest {
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));  //implicitlyWait is instantiated once for all tests in helperTest
+        explicitWait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         driver.get(baseUrl);
         driver.manage().window().fullscreen(); //added to maximize to original screen size
         explicitWait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -45,25 +48,10 @@ public class BaseTest {
         getDriver().quit();
     }
 
-    public void enterEmail(String email){
-        WebElement emailField = getDriver().findElement(By.cssSelector("input[type='email']"));
-        emailField.clear();
-        emailField.sendKeys(email);
-    }
-    public void enterPassword(String password){
-        WebElement passwordField = getDriver().findElement(By.cssSelector("input[type='password']"));
-        passwordField.clear();
-        passwordField.sendKeys(password);
-    }
-    public void clickLoginButton(){
-        WebElement loginButton = getDriver().findElement(By.cssSelector("button[type='submit']"));
-        loginButton.click();
-    }
-    public void loginKoel(String email,String password){
-        enterEmail(email);
-        enterPassword(password);
-        clickLoginButton();
-    }
+
+
+
+
     public void createPlaylist(){
         WebElement plusSign = explicitWait.until(ExpectedConditions.elementToBeClickable
                 (By.cssSelector("i[data-testid='sidebar-create-playlist-btn']")));
