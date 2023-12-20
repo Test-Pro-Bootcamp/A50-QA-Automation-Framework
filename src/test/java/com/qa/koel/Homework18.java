@@ -7,18 +7,22 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Homework18 extends BaseTest {
+        LoginPage loginPage;
+        HomePage homePage;
+        AllSongsPage allSongsPage;
 
     @Test(testName = "Play A Song", groups = {"Smoke","Regression"})
 
-    public void playSong() throws InterruptedException{
-        enterEmail("son.nam.kim@testpro.io");
-        enterPassword("koel08/23");
-        clickLoginButton();
-        Thread.sleep(5000);
-        clickFirstSongFromAllSongsToPlay();
-        Thread.sleep(3000);
-        WebElement soundBarsImage = getDriver().findElement(By.cssSelector("div>img"));
-        Assert.assertTrue(soundBarsImage.isDisplayed());
+    public void playSong() {
+        loginPage = new LoginPage(getDriver());
+        homePage = new HomePage(getDriver());
+        allSongsPage = new AllSongsPage(getDriver());
 
+        loginPage.loginKoel("son.nam.kim@testpro.io","koel08/23");
+        allSongsPage.clickSidePanelListAllSongs();
+        allSongsPage.contextClickFirstSongInAllSongsPlaylist();
+        allSongsPage.clickOptionPlayInDropdownMenu();
+
+        Assert.assertTrue(allSongsPage.soundBarsImage().isDisplayed());
     }
 }

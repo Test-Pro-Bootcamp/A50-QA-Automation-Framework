@@ -2,30 +2,21 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="TestNG" thread-count="2" parallel="false">
-<parameter name="baseUrl" value="https://qa.koel.app/"></parameter>
+<parameter name="baseUrl" value="https://qa.koel.app/"/>
     <test name="Example Test" preserve-order="false">
         <classes>
+            <class name="com.qa.koel.Homework21"/>
             <class name="com.qa.koel.Homework20">
                 <methods>
-                    <include name="deletePlaylist"></include>
+                    <include name="deletePlaylist"/>
                 </methods>
             </class>
-<!--            <class name="com.qa.koel.Homework19">-->
-            <class name="com.qa.koel.Homework21"></class>
-<!--            <class name="Homework20">-->
-<!--                <methods>-->
-<!--                    <include name="deletePlaylist"></include>-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--            <class name="Homework19">-->
-<!--                <methods>-->
-<!--                    <include name="deletePlaylist"></include>-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--            <class name="com.qa.koel.Homework18"/>-->
-<!--            <class name="com.qa.koel.Homework17"/>-->
-<!--            <class name="com.qa.koel.LoginTests"/>-->
-<!--            <class name="com.qa.koel.BaseTest"/>-->
+            <class name="com.qa.koel.Homework19"/>
+            <class name="com.qa.koel.Homework18"/>
+            <class name="com.qa.koel.Homework17_AddSong"/>
+            <class name="com.qa.koel.Homework16_Registration"/>
+            <class name="com.qa.koel.LoginTests"/>
+            <class name="com.qa.koel.BaseTest"/>
         </classes>
     </test>
 </suite>

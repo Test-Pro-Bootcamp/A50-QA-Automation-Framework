@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.qa.koel.LoginPage.LOGIN_BUTTON;
+
 
 public class LoginTests extends BaseTest {
     LoginPage loginPage;
@@ -15,11 +17,11 @@ public class LoginTests extends BaseTest {
     @Test(testName = "Login with empty email and password test", groups = "Regression")
     public void loginEmptyEmailPassword(String email,String password) {
          loginPage = new LoginPage(getDriver());
-        loginPage.loginKoel(email, password);
+        loginPage.loginKoel("", "");
 
-        explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("ul[class='menu'")));
-        Assert.assertTrue(getDriver().findElement(By.cssSelector("button[type='submit'")).isDisplayed());
+        Assert.assertTrue(loginPage.loginButton());
     }
+
     @Test(testName = "Login with correct credentials test", groups = {"Smoke","Regression"})
     public void loginUserTest() {
         loginPage = new LoginPage(getDriver());

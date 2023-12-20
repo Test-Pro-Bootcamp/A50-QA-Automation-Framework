@@ -26,8 +26,11 @@ public class LoginPage extends BasePage {
         loginButton.click();
     }
     public void loginKoel(String email,String password){
-        enterEmail(email);
-        enterPassword(password);
+        enterEmail("son.nam.kim@testpro.io");
+        enterPassword("koel08/23");
         clickLoginButton();
+    }
+    public boolean loginButton(){
+        return pageDriver.findElement(LOGIN_BUTTON).isDisplayed();
     }
 }

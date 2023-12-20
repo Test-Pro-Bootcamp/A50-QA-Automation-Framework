@@ -8,16 +8,20 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Homework20 extends BaseTest {
+        LoginPage loginPage;
+        HomePage homePage;
     @Test(testName = "Refactor code adding explicit waits")
-    public void deletePlaylist() throws InterruptedException {
-        loginKoel("son.nam.kim@testpro.io", "koel08/23");
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[data-testid='btn-logout']>i"))).isDisplayed();
-        createPlaylist();
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#playlists > ul > li:nth-child(4) > a"))).isDisplayed();
-        clickDeletePlaylist();
-        explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div>span>button.del")));
-        WebElement notificationDeletedPlaylistName = getDriver().findElement(By.cssSelector("div.success"));
-        Assert.assertTrue(notificationDeletedPlaylistName.isDisplayed());
+    public void deletePlaylist() {
+        loginPage = new LoginPage(getDriver());
+        homePage = new HomePage(getDriver());
+
+        loginPage.loginKoel("son.nam.kim@testpro.io", "koel08/23");
+        homePage.clickPlusSign();
+        homePage.clickOptionSimpleNewPlaylist();
+        homePage.typeInNewPlaylistName();
+        homePage.clickCreatedSimplePlaylistNewP();
+        homePage.clickDeletePlaylistButton();
+        Assert.assertTrue(homePage.notificationDeletedPlaylistName().isDisplayed());
         }
     }
 
