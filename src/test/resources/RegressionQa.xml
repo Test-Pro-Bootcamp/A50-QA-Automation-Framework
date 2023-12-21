@@ -4,7 +4,7 @@
     <parameter name="baseUrl" value="https://qa.koel.app/"></parameter>
     <test name="Regression test">
         <classes>
-            <class name="com.qa.koel.RenameUserProfileTest"></class>
+            <class name="com.qa.koel.UserProfileTest"></class>
             <class name="com.qa.koel.LoginTest">
             </class>
         </classes>

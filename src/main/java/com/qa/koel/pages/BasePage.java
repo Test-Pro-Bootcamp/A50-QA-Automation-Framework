@@ -34,6 +34,11 @@ public class BasePage {
         explicitWait.until(ExpectedConditions.visibilityOf(element));
     }
 
+    public void waitUntilElementToBeClickable(WebElement element, int timeout) {
+        explicitWait = new WebDriverWait(pageDriver, Duration.ofSeconds(timeout));
+        explicitWait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
     public void waitUntilVisibleOfElement(By locator, int timeout) {
         explicitWait = new WebDriverWait(pageDriver, Duration.ofSeconds(timeout));
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(locator));

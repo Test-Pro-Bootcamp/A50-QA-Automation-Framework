@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="TestNG" thread-count="2" parallel="false">
+<suite name="TestNG" thread-count="2" parallel="true">
 <parameter name="baseUrl" value="https://qa.koel.app/"></parameter>
     <test name="Example Test" preserve-order="false">
         <classes>
-            <class name="com.qa.koel.LoginTest"/>
-            <class name="com.qa.koel.BaseTest"/>
-<!--            <class name="com.qa.koel.RenameUserProfileTest"></class>-->
+<!--            <class name="com.qa.koel.LoginTest"/>-->
+<!--            <class name="com.qa.koel.BaseTest"/>-->
+            <class name="com.qa.koel.UserProfileTest">
+                <methods>
+                    <include name="changeUserProfileTheme"/>
+                </methods>
+            </class>
 <!--            <class name="com.qa.koel.PlayListTest"></class>-->
         </classes>
     </test>
