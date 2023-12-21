@@ -17,7 +17,8 @@ dependencies {
 
 test {
     useTestNG() {
-        suites "src/test/resources/TestNG.xml"
+        suites "src/test/resources/TestNg.xml"
+        systemProperty "browserName", System.getProperty("browserName")
     }
 }
 
@@ -27,7 +28,7 @@ test {
 //    }
 //}
 //
-//test regressionTest {
+//test regressionTest{
 //    useTestNG() {
 //        suites "src/test/resources/Regression.xml"
 //    }

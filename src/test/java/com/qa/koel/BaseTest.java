@@ -1,6 +1,7 @@
 package com.qa.koel;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -37,6 +38,7 @@ public class BaseTest {
         driver.manage().window().fullscreen(); //added to maximize to original screen size
         explicitWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
+
     }
 
     public WebDriver getDriver() {
@@ -44,6 +46,7 @@ public class BaseTest {
     }
 
     @AfterMethod
+
     public void closeWebBrowser() {
         getDriver().quit();
     }
