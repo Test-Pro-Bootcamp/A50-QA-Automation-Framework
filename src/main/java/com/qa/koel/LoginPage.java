@@ -3,34 +3,39 @@ package com.qa.koel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
-    static final By PASSWORD_FIELD = By.cssSelector("input[type='password']"); //declared constanta
-    static final By EMAIL_FIELD = By.cssSelector("input[type='email']");
-    static final By LOGIN_BUTTON  = By.cssSelector("button[type='submit']");
+    @FindBy(css = "input[type='email']")
+    WebElement emailField;
+    @FindBy(css = "input[type='password']")
+    WebElement passwordField;
+    @FindBy(css = "button[type='submit']")
+    WebElement loginButton;
     public LoginPage(WebDriver driver) {
         super(driver);
     }
-    public void enterEmail(String email){  //private because we use it only inside this class
-        WebElement emailField = pageDriver.findElement(EMAIL_FIELD);
+    public LoginPage enterEmail(String email){  //private because we use it only inside this class
         emailField.clear();
         emailField.sendKeys(email);
+        return this;
     }
-    public void enterPassword(String password){
-        WebElement passwordField = pageDriver.findElement(PASSWORD_FIELD);
+    public LoginPage enterPassword(String password){
         passwordField.clear();
         passwordField.sendKeys(password);
+        return this;
     }
-    public void clickLoginButton(){
-        WebElement loginButton = pageDriver.findElement(LOGIN_BUTTON);
+    public LoginPage clickLoginButton(){
         loginButton.click();
+        return this;
     }
-    public void loginKoel(String email,String password){
+    public LoginPage loginKoel(String email,String password){
         enterEmail("son.nam.kim@testpro.io");
         enterPassword("koel08/23");
         clickLoginButton();
+        return this;
     }
-    public boolean loginButton(){
-        return pageDriver.findElement(LOGIN_BUTTON).isDisplayed();
+    public WebElement loginButton(){
+        return loginButton;
     }
 }

@@ -15,12 +15,12 @@ public class Homework21 extends BaseTest{
         homePage = new HomePage(getDriver());
 
         loginPage.loginKoel("son.nam.kim@testpro.io", "koel08/23");
-        homePage.clickPlusSign();
-        homePage.clickOptionSimpleNewPlaylist();
-        homePage.typeInNewPlaylistName();
-        homePage.contextClickCreatedPlaylistNewP();
-        homePage.clickEditCreatedPlaylistButton();
-        homePage.renameCreatedPlaylist();
+        homePage.clickPlusSign("i[class='fa fa-plus-circle create']")
+                .clickOptionSimpleNewPlaylist("li[data-testid='playlist-context-menu-create-simple']")
+                .typeInNewPlaylistName("form[class='create']>input")
+                .contextClickCreatedPlaylistNewP()
+                .clickEditCreatedPlaylistButton()
+                .renameCreatedPlaylist();
 
         Assert.assertTrue(homePage.getNotificationUpdatedPlaylist().isDisplayed());
     }

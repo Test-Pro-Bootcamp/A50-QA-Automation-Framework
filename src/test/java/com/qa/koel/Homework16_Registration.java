@@ -13,13 +13,12 @@ public class Homework16_Registration extends BaseTest {
     public void registrationNavigationTest() {
         loginPage = new LoginPage(getDriver());
         registrationPage = new RegistrationPage(getDriver());
-        registrationPage.clickLoginFormRegistrationElement();
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.cssSelector("form>p:nth-child(4)>input[type='email']")));
-        registrationPage.registrationPageEmailField().isDisplayed();
 
-        Assert.assertTrue(registrationPage.getRegisterNewAccountElement());
-
+        registrationPage.clickLoginFormRegistrationElement("//form//div[2]//a")
+//        explicitWait.until(ExpectedConditions.visibilityOfElementLocated
+//                (By.cssSelector("form>p:nth-child(4)>input[type='email']")));
+                        .registrationPageEmailField().isDisplayed();
+        Assert.assertTrue(registrationPage.getRegisterNewAccountElement().isDisplayed());
         }
     }
 

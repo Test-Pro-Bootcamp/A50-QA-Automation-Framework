@@ -4,11 +4,11 @@ import com.qa.koel.BaseTest;
 import com.qa.koel.HomePage;
 import com.qa.koel.LoginPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static com.qa.koel.LoginPage.LOGIN_BUTTON;
 
 
 public class LoginTests extends BaseTest {
@@ -19,17 +19,17 @@ public class LoginTests extends BaseTest {
          loginPage = new LoginPage(getDriver());
         loginPage.loginKoel("", "");
 
-        Assert.assertTrue(loginPage.loginButton());
+        Assert.assertTrue(loginPage.loginButton().isDisplayed());
     }
 
     @Test(testName = "Login with correct credentials test", groups = {"Smoke","Regression"})
     public void loginUserTest() {
         loginPage = new LoginPage(getDriver());
         homePage = new HomePage(getDriver());
-        loginPage.enterEmail("son.nam.kim@testpro.io");
-        loginPage.enterPassword("koel08/23");
-        loginPage.clickLoginButton();
+        loginPage.enterEmail("son.nam.kim@testpro.io")
+                .enterPassword("koel08/23")
+                .clickLoginButton();
 
-        Assert.assertTrue(homePage.getLogOutButton().isDisplayed());
+        Assert.assertTrue(homePage.getLogOutButton("a[data-testid='btn-logout']>i").isDisplayed());
     }
 }

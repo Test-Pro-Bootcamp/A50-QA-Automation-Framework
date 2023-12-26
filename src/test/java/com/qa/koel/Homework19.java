@@ -19,11 +19,12 @@ public class Homework19 extends BaseTest {
         homePage = new HomePage(getDriver());
 
         loginPage.loginKoel("son.nam.kim@testpro.io", "koel08/23");
-        homePage.clickPlusSign();
-        homePage.clickOptionSimpleNewPlaylist();
-        homePage.typeInNewPlaylistName();
-        homePage.clickCreatedSimplePlaylistNewP();
-        homePage.clickDeletePlaylistButton();
+        homePage.clickPlusSign("i[data-testid='sidebar-create-playlist-btn']")
+                .clickOptionSimpleNewPlaylist("li[data-testid='playlist-context-menu-create-simple']")
+                .getInputTypeTextField("input[name='name']")
+                .typeInNewPlaylistName("input[name='name']")
+                .clickCreatedSimplePlaylistNewP("#playlists > ul > li:nth-child(4) > a")
+                .clickDeletePlaylistButton("div>span>button.del");
 
         Assert.assertTrue(homePage.notificationDeletedPlaylistName().isDisplayed());
     }

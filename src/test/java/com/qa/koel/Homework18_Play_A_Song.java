@@ -1,12 +1,9 @@
 package com.qa.koel;
 
-import com.qa.koel.BaseTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Homework18 extends BaseTest {
+public class Homework18_Play_A_Song extends BaseTest {
         LoginPage loginPage;
         HomePage homePage;
         AllSongsPage allSongsPage;
@@ -19,10 +16,11 @@ public class Homework18 extends BaseTest {
         allSongsPage = new AllSongsPage(getDriver());
 
         loginPage.loginKoel("son.nam.kim@testpro.io","koel08/23");
-        allSongsPage.clickSidePanelListAllSongs();
-        allSongsPage.contextClickFirstSongInAllSongsPlaylist();
-        allSongsPage.clickOptionPlayInDropdownMenu();
+        allSongsPage.clickSidePanelListAllSongs("a[class='songs']")
+                    .clickFirstSongInAllSongsPlaylist("tr[class='song-item selected']>td.title")
+                    .contextClickFirstSongInAllSongsPlaylist("tr[class='song-item selected']>td.title")
+                    .clickOptionPlayInDropdownMenu("li.playback");
 
-        Assert.assertTrue(allSongsPage.soundBarsImage().isDisplayed());
+        Assert.assertTrue(allSongsPage.soundBarsImage("div>img").isDisplayed());
     }
 }
