@@ -1,4 +1,4 @@
-package com.qa.koel;
+package com.qa.koel.testng;
 
 import org.testng.annotations.DataProvider;
 
