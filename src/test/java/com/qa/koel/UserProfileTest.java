@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.util.UUID;
 
-public class RenameUserProfileTest extends BaseTest {
+public class UserProfileTest extends BaseTest {
 
     LoginPage loginPage;
     HomePage homePage;
@@ -19,7 +19,7 @@ public class RenameUserProfileTest extends BaseTest {
         String newName = UUID.randomUUID().toString();
         loginPage = new LoginPage(getDriver());
         loginPage.loginKoel("demo@class.com", "te$t$tudent");
-        homePage.waitUntilInvisibleOfElement(homePage.getAvatar(), 10);
+        homePage.waitUntilVisibleOfElement(homePage.getAvatar(), 10);
         homePage = new HomePage(getDriver());
         homePage.getAvatar().click();
         profilePage = new ProfilePage(getDriver());
@@ -29,5 +29,19 @@ public class RenameUserProfileTest extends BaseTest {
         profilePage.waitUntilInvisibleOfElement(profilePage.getSuccessBanner(), 5);
         Assert.assertEquals(homePage.getViewProfileElement().getText(), newName);
         Assert.assertTrue(homePage.getAvatar().isDisplayed());
+    }
+
+    @Test(testName = "Change theme for user profile")
+    public void changeUserProfileTheme() throws InterruptedException {
+        String themeName = "Oak";
+        loginPage = new LoginPage(getDriver());
+        loginPage.loginKoel("demo@class.com", "te$t$tudent");
+        homePage = new HomePage(getDriver());
+        homePage.waitUntilElementToBeClickable(homePage.getAvatar(), 10);
+        homePage.getAvatar().click();
+        profilePage = new ProfilePage(getDriver());
+        profilePage.changeTheme(themeName);
+        Thread.sleep(3000);
+        Assert.assertTrue(profilePage.isThemeSelected(themeName));
     }
 }

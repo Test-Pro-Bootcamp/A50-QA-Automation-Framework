@@ -4,7 +4,7 @@
 <suite name="Smoke">
     <test name="Smoke test" preserve-order="false">
         <classes>
-            <class name="com.qa.koel.RenameUserProfileTest"></class>
+            <class name="com.qa.koel.UserProfileTest"></class>
             <class name="com.qa.koel.LoginTest">
                 <methods>
                     <include name="loginUserTest"/>
