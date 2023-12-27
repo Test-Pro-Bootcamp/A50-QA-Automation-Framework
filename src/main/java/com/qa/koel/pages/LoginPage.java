@@ -14,15 +14,18 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    private void enterEmail(String email) {
+    public LoginPage enterEmail(String email) {
         WebElement emailField = pageDriver.findElement(EMAIL_FIELD);// or xpath
         emailField.clear();
         emailField.sendKeys(email);
+        return this;
     }
-    private void enterPassword(String password) {
+
+    public LoginPage enterPassword(String password) {
         WebElement passwordField = pageDriver.findElement(PASSWORD_FIELD);
         passwordField.clear();
         passwordField.sendKeys(password);
+        return this;
     }
 
     public WebElement getSubmitButton() {
@@ -30,7 +33,7 @@ public class LoginPage extends BasePage {
         return loginButton;
     }
 
-    private void clickLoginButton() {
+    public void clickLoginButton() {
         getSubmitButton().click();
     }
 

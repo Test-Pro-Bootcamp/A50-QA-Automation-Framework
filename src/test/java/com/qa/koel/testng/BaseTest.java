@@ -1,4 +1,4 @@
-package com.qa.koel;
+package com.qa.koel.testng;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -46,6 +46,7 @@ public abstract class BaseTest {
     public void closerDriver() {
         getDriver().quit();
     }
+
     public WebDriver pickDriver(String browserName) throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         String gridUrl = "http://192.168.1.178:4444/";

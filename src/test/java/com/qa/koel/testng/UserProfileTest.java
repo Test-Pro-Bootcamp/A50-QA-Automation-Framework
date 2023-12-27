@@ -1,4 +1,4 @@
-package com.qa.koel;
+package com.qa.koel.testng;
 
 import com.qa.koel.pages.HomePage;
 import com.qa.koel.pages.LoginPage;
