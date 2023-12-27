@@ -15,9 +15,9 @@ public class Homework21 extends BaseTest{
         homePage = new HomePage(getDriver());
 
         loginPage.loginKoel("son.nam.kim@testpro.io", "koel08/23");
-        homePage.clickPlusSign("i[class='fa fa-plus-circle create']")
-                .clickOptionSimpleNewPlaylist("li[data-testid='playlist-context-menu-create-simple']")
-                .typeInNewPlaylistName("form[class='create']>input")
+        homePage.createNewPlaylist()
+                .clickOptionSimpleNewPlaylist()
+                .typeInNewPlaylistName()
                 .contextClickCreatedPlaylistNewP()
                 .clickEditCreatedPlaylistButton()
                 .renameCreatedPlaylist();

@@ -15,13 +15,13 @@ public class HomePage extends BasePage {
     WebElement avatar;
     @FindBy(css = "a[data-testid='view-profile-link'")
     WebElement viewProfileNameElement;
-    @FindBy(css = "i[data-testid='sidebar-create-playlist-btn']")
+    @FindBy(xpath = "//i[@title='Create a new playlist']")
     WebElement plusSign;
     @FindBy(css = "li[data-testid='playlist-context-menu-create-simple']")
     WebElement optionSimpleNewPlaylist;
     @FindBy(css = "input[name='name']")
     WebElement inputTypeText;
-    @FindBy(css = "#playlists > ul > li:nth-child(4) > a")
+    @FindBy(css = "section[id='playlists']>ul>li:nth-child(4)>a")
     WebElement createdSimplePlaylistNewP;
     @FindBy(xpath = "//ul/li[4]/nav/ul/li[1]")
     WebElement editCreatedPlaylistButton;
@@ -37,7 +37,7 @@ public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
         super(driver);
     }
-    public WebElement getLogOutButton(String s){
+    public WebElement getLogOutButton(){
         return logOutButton;
     }
     public WebElement getAvatar(){
@@ -46,29 +46,29 @@ public class HomePage extends BasePage {
     public WebElement getViewProfileElement(){
         return viewProfileNameElement;
     }
-    public HomePage clickPlusSign(String s){
+    public HomePage createNewPlaylist(){
         actions.moveToElement(plusSign).click();
         return this;
     }
-    public HomePage clickOptionSimpleNewPlaylist(String s){
-        actions.moveToElement(optionSimpleNewPlaylist).click();
+    public HomePage clickOptionSimpleNewPlaylist(){
+        optionSimpleNewPlaylist.click();
         return this;
    }
-   public HomePage getInputTypeTextField(String s){
+   public HomePage getInputTypeTextField(){
         inputTypeText.isDisplayed();
         return this;
    }
-    public HomePage typeInNewPlaylistName(String s){
+    public HomePage typeInNewPlaylistName(){
         inputTypeText.sendKeys("NewP");
         inputTypeText.sendKeys(Keys.ENTER);
         return this;
     }
-    public HomePage clickCreatedSimplePlaylistNewP(String s){
+    public HomePage clickCreatedSimplePlaylistNewP(){
         createdSimplePlaylistNewP.click();
         return this;
     }
     public HomePage contextClickCreatedPlaylistNewP(){
-        actions.contextClick(createdSimplePlaylistNewP);
+        actions.contextClick(createdSimplePlaylistNewP).perform();
         return this;
     }
     public HomePage clickEditCreatedPlaylistButton(){
@@ -76,7 +76,7 @@ public class HomePage extends BasePage {
         return this;
     }
     public HomePage renameCreatedPlaylist(){
-        inputFieldForCreatedPlaylist.click();
+        inputFieldForCreatedPlaylist.clear();
         inputFieldForCreatedPlaylist.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.BACK_SPACE));
         inputFieldForCreatedPlaylist.sendKeys("SimpleNP");
         inputFieldForCreatedPlaylist.sendKeys(Keys.ENTER);
@@ -85,15 +85,15 @@ public class HomePage extends BasePage {
     public WebElement getNotificationUpdatedPlaylist(){
         return getNotificationUpdatedPlaylist();
     }
-    public HomePage clickDeletePlaylistButton(String s){
+    public HomePage clickDeletePlaylistButton(){
         deletePlaylistButton.click();
         return this;
     }
-    public HomePage clickDeleteOkButton(String s){
+    public HomePage clickDeleteOkButton(){
         buttonOk.click();
         return this;
    }
     public WebElement notificationDeletedPlaylistName(){
-        return notificationDeletedPlaylistName();
+        return notificationMessage;
    }
 }

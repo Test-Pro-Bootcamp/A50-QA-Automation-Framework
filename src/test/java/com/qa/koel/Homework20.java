@@ -16,11 +16,11 @@ public class Homework20 extends BaseTest {
         homePage = new HomePage(getDriver());
 
         loginPage.loginKoel("son.nam.kim@testpro.io", "koel08/23");
-        homePage.clickPlusSign("i[class='fa fa-plus-circle create']")
-                .clickOptionSimpleNewPlaylist("li[data-testid='playlist-context-menu-create-simple']")
-                .typeInNewPlaylistName("form[class='create']>input")
-                .clickCreatedSimplePlaylistNewP("#playlists > ul > li:nth-child(4) > a")
-                .clickDeletePlaylistButton("div>span>button.del");
+        homePage.createNewPlaylist()
+                .clickOptionSimpleNewPlaylist()
+                .typeInNewPlaylistName()
+                .clickCreatedSimplePlaylistNewP()
+                .clickDeletePlaylistButton();
         Assert.assertTrue(homePage.notificationDeletedPlaylistName().isDisplayed());
         }
     }

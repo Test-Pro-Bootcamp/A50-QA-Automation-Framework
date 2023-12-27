@@ -26,34 +26,34 @@ public class AllSongsPage extends BasePage {
     public AllSongsPage(WebDriver driver) {
         super(driver);
     }
-    public AllSongsPage clickSidePanelListAllSongs(String s){
-        actions.moveToElement(sidePanelListAllSongs).click();
+    public AllSongsPage clickSidePanelListAllSongs(){
+        sidePanelListAllSongs.click();
         return this;
     }
-    public AllSongsPage clickFirstSongInAllSongsPlaylist(String s){
-        actions.moveToElement(firstSongInAllSongsPlaylist).click();
+    public AllSongsPage clickFirstSongInAllSongsPlaylist(){
+        firstSongInAllSongsPlaylist.click();
         return this;
     }
-    public AllSongsPage clickGreenButtonAddTo(String s){
+    public AllSongsPage clickGreenButtonAddTo(){
         greenButtonAddTo.click();
         return this;
     }
-    public AllSongsPage clickDropdownMenuPlaylistNewP(String s){
+    public AllSongsPage clickDropdownMenuPlaylistNewP(){
         dropdownMenuPlaylistNewP.click();
         return this;
     }
-    public WebElement getAddedFirstSongToSimpleCreatedPlaylist(String s){
+    public WebElement getAddedFirstSongToSimpleCreatedPlaylist(){
         return addedFirstSongFromAllSongs;
     }
-    public AllSongsPage contextClickFirstSongInAllSongsPlaylist(String s){
-        actions.contextClick(firstSongInAllSongsPlaylist);
+    public AllSongsPage contextClickFirstSongInAllSongsPlaylist(){
+        contextClick(firstSongInAllSongsPlaylist);
         return this;
     }
-    public AllSongsPage clickOptionPlayInDropdownMenu(String s){
-        actions.moveToElement(optionPlayInDropdownMenu).click();
+    public AllSongsPage clickOptionPlayInDropdownMenu(){
+        optionPlayInDropdownMenu.click();
         return this;
     }
-    public WebElement soundBarsImage(String s){
+    public WebElement soundBarsImage(){
         return soundBarsImage;
     }
 }

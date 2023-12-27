@@ -16,11 +16,11 @@ public class Homework18_Play_A_Song extends BaseTest {
         allSongsPage = new AllSongsPage(getDriver());
 
         loginPage.loginKoel("son.nam.kim@testpro.io","koel08/23");
-        allSongsPage.clickSidePanelListAllSongs("a[class='songs']")
-                    .clickFirstSongInAllSongsPlaylist("tr[class='song-item selected']>td.title")
-                    .contextClickFirstSongInAllSongsPlaylist("tr[class='song-item selected']>td.title")
-                    .clickOptionPlayInDropdownMenu("li.playback");
+        allSongsPage.clickSidePanelListAllSongs()
+                    .clickFirstSongInAllSongsPlaylist()
+                    .contextClickFirstSongInAllSongsPlaylist()
+                    .clickOptionPlayInDropdownMenu();
 
-        Assert.assertTrue(allSongsPage.soundBarsImage("div>img").isDisplayed());
+        Assert.assertTrue(allSongsPage.soundBarsImage().isDisplayed());
     }
 }

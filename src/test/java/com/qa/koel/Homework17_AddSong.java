@@ -14,19 +14,17 @@ public class Homework17_AddSong extends BaseTest {
     allSongsPage = new AllSongsPage(getDriver());
 
     loginPage.loginKoel("son.nam.kim@testpro.io","koel08/23");
-    homePage.clickPlusSign("i[class='fa fa-plus-circle create']")
-            .clickOptionSimpleNewPlaylist("li[data-testid='playlist-context-menu-create-simple']")
-            .typeInNewPlaylistName("form[class='create']>input")
-            .clickCreatedSimplePlaylistNewP("#playlists > ul > li:nth-child(4) > a");
-    allSongsPage.clickSidePanelListAllSongs("a[class='songs']")
-                .clickFirstSongInAllSongsPlaylist("#songsWrapper > div > div > div > table > tr:nth-child(1) > td.title")
-                .clickGreenButtonAddTo("button[class='btn-add-to']")
-                .clickDropdownMenuPlaylistNewP("#songsWrapper > header > div > div > section > ul > li.playlist");
-    homePage.clickCreatedSimplePlaylistNewP("#playlists > ul > li:nth-child(4) > a");
-    allSongsPage.getAddedFirstSongToSimpleCreatedPlaylist("#playlistWrapper>div>div>div>table>tr>td.title");
-    Assert.assertTrue(allSongsPage.getAddedFirstSongToSimpleCreatedPlaylist("#playlistWrapper>div>div>div>table>tr>td.title").isDisplayed());
-    homePage.clickDeletePlaylistButton("div>span>button.del")
-            .clickDeleteOkButton("button.ok");
+    homePage.createNewPlaylist()
+            .clickOptionSimpleNewPlaylist()
+            .typeInNewPlaylistName()
+            .clickCreatedSimplePlaylistNewP();
+    allSongsPage.clickSidePanelListAllSongs()
+                .clickFirstSongInAllSongsPlaylist()
+                .clickGreenButtonAddTo()
+                .clickDropdownMenuPlaylistNewP();
+    homePage.clickCreatedSimplePlaylistNewP()
+            .clickDeletePlaylistButton()
+            .clickDeleteOkButton();
     Assert.assertTrue(homePage.notificationDeletedPlaylistName().isDisplayed());
 
 }

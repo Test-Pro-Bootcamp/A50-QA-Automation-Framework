@@ -30,6 +30,6 @@ public class LoginTests extends BaseTest {
                 .enterPassword("koel08/23")
                 .clickLoginButton();
 
-        Assert.assertTrue(homePage.getLogOutButton("a[data-testid='btn-logout']>i").isDisplayed());
+        Assert.assertTrue(homePage.getLogOutButton().isDisplayed());
     }
 }
