@@ -9,19 +9,19 @@ import org.openqa.selenium.support.FindBy;
 
 public class AllSongsPage extends BasePage {
     @FindBy(css = "a[class='songs']")
-    WebElement sidePanelListAllSongs;
+    private WebElement sidePanelListAllSongs;
     @FindBy(css = "tr[class='song-item selected']>td.title")
-    WebElement firstSongInAllSongsPlaylist;
+    private WebElement firstSongInAllSongsPlaylist;
     @FindBy(css = "button[class='btn-add-to']")
-    WebElement greenButtonAddTo;
+    private WebElement greenButtonAddTo;
     @FindBy(css = "#songsWrapper > header > div > div > section > ul > li.playlist")
-    WebElement dropdownMenuPlaylistNewP;
+    private WebElement dropdownMenuPlaylistNewP;
     @FindBy(css = "li.playback")
-    WebElement optionPlayInDropdownMenu;
+    private WebElement optionPlayInDropdownMenu;
     @FindBy(css = "div>img")
-    WebElement soundBarsImage;
+    private WebElement soundBarsImage;
     @FindBy(css = "#playlistWrapper>div>div>div>table>tr>td.title")
-    WebElement addedFirstSongFromAllSongs;
+    private WebElement addedFirstSongFromAllSongs;
 
     public AllSongsPage(WebDriver driver) {
         super(driver);

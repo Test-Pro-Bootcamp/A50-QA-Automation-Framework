@@ -47,37 +47,5 @@ public class BaseTest {
     public void closeWebBrowser() {
         getDriver().quit();
     }
-
-    public void createPlaylist(){
-
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.cssSelector("li[data-testid='playlist-context-menu-create-simple']")));
-
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#playlists > ul > li:nth-child(4) > a")));
-    }
-    public void addSongIntoUserPlaylist() {}
-    public void clickDeletePlaylist(){
-
-        WebElement createdPlaylistNewP = getDriver().findElement(By.cssSelector
-                    ("#playlists > ul > li:nth-child(4) > a"));
-        createdPlaylistNewP.click();
-    }
-    public void clickFirstSongFromAllSongsToPlay(){
-        WebElement playlistAllSongs = getDriver().findElement(By.cssSelector("a[class='songs']"));
-        playlistAllSongs.click();
-    }
-    public void contextClickCreatedPlaylist(){
-
-    }
-    public void changePlaylistName(){
-
-        explicitWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("input[name='name']")));
-
-    }
-    public String getChangedPlaylistName(){
-        WebElement newPlaylistName = explicitWait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.cssSelector("ul>li:nth-child(4)>a.active")));
-        String name = newPlaylistName.getText();
-        return name;
-    }
+    
 }

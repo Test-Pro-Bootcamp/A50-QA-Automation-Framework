@@ -8,31 +8,35 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.time.Instant;
+
 public class HomePage extends BasePage {
     @FindBy(css = "a[data-testid='btn-logout']>i")
-    WebElement logOutButton;
+    private WebElement logOutButton;
     @FindBy(css = "image[class='avatar'")
-    WebElement avatar;
+    private WebElement avatar;
     @FindBy(css = "a[data-testid='view-profile-link'")
-    WebElement viewProfileNameElement;
+    private WebElement viewProfileNameElement;
     @FindBy(xpath = "//i[@title='Create a new playlist']")
-    WebElement plusSign;
+    private WebElement plusSign;
     @FindBy(css = "li[data-testid='playlist-context-menu-create-simple']")
-    WebElement optionSimpleNewPlaylist;
+    private WebElement optionSimpleNewPlaylist;
     @FindBy(css = "input[name='name']")
-    WebElement inputTypeText;
+    private WebElement inputTypeText;
     @FindBy(css = "section[id='playlists']>ul>li:nth-child(4)>a")
-    WebElement createdSimplePlaylistNewP;
+    private WebElement createdSimplePlaylistNewP;
     @FindBy(xpath = "//ul/li[4]/nav/ul/li[1]")
-    WebElement editCreatedPlaylistButton;
+    private WebElement editCreatedPlaylistButton;
     @FindBy(css = "input[name='name']")
-    WebElement inputFieldForCreatedPlaylist;
+    private WebElement inputFieldForCreatedPlaylist;
     @FindBy(css = "div>span>button.del")
-    WebElement deletePlaylistButton;
+    private WebElement deletePlaylistButton;
     @FindBy(css = "div.success")
-    WebElement notificationMessage;
+    private WebElement notificationMessage;
     @FindBy(css = "button.ok")
-    WebElement buttonOk;
+    private WebElement buttonOk;
+    @FindBy(css = "ul>li:nth-child(4)>a.active")
+    private WebElement newPlaylistName;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -96,4 +100,8 @@ public class HomePage extends BasePage {
     public WebElement notificationDeletedPlaylistName(){
         return notificationMessage;
    }
+    public String getChangedPlaylistName(){
+        String name = newPlaylistName.getText();
+        return name;
+    }
 }

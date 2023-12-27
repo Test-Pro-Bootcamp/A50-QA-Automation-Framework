@@ -7,11 +7,11 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
     @FindBy(css = "input[type='email']")
-    WebElement emailField;
+    private WebElement emailField;
     @FindBy(css = "input[type='password']")
-    WebElement passwordField;
+    private WebElement passwordField;
     @FindBy(css = "button[type='submit']")
-    WebElement loginButton;
+    private WebElement loginButton;
     public LoginPage(WebDriver driver) {
         super(driver);
     }
