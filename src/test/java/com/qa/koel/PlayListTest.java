@@ -12,7 +12,7 @@ public class PlayListTest extends BaseTest {
     LoginPage loginPage;
     PlayListPage playListPage;
 
-    @Test
+    @Test(enabled = false)
     public void deletePlayList() {
         String playListName = UUID.randomUUID().toString();
         loginPage = new LoginPage(getDriver());

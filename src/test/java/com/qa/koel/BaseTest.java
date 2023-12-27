@@ -7,6 +7,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -50,7 +52,9 @@ public abstract class BaseTest {
         switch (browserName) {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
-                return new FirefoxDriver();
+                FirefoxOptions fireFoxOptions = new FirefoxOptions();
+                fireFoxOptions.setCapability("dom.webnotifications.enabled", false);
+                return new FirefoxDriver(fireFoxOptions);
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
